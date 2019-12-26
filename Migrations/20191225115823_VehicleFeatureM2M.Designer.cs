@@ -4,14 +4,16 @@ using DotNetAngularApp.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DotNetAngularApp.Migrations
 {
     [DbContext(typeof(CarSMARTDBContext))]
-    partial class CarSMARTDBContextModelSnapshot : ModelSnapshot
+    [Migration("20191225115823_VehicleFeatureM2M")]
+    partial class VehicleFeatureM2M
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,7 +114,7 @@ namespace DotNetAngularApp.Migrations
 
                     b.HasIndex("ModelId");
 
-                    b.ToTable("Vehicles");
+                    b.ToTable("Vehicle");
                 });
 
             modelBuilder.Entity("DotNetAngularApp.Models.VehicleFeature", b =>
