@@ -4,14 +4,16 @@ using DotNetAngularApp.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DotNetAngularApp.Migrations
 {
     [DbContext(typeof(CarSMARTDBContext))]
-    partial class CarSMARTDBContextModelSnapshot : ModelSnapshot
+    [Migration("20191229090304_MigrationFinalAPI")]
+    partial class MigrationFinalAPI
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -151,7 +153,7 @@ namespace DotNetAngularApp.Migrations
             modelBuilder.Entity("DotNetAngularApp.Models.VehicleFeature", b =>
                 {
                     b.HasOne("DotNetAngularApp.Models.Features", "Feature")
-                        .WithMany("Vehicles")
+                        .WithMany()
                         .HasForeignKey("FeatureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

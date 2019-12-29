@@ -12,5 +12,12 @@ namespace DotNetAngularApp.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }   
+
+         public IList<VehicleFeature> Vehicles { get; set; }
+
+        public Features()
+        {
+          Vehicles = new List<VehicleFeature>();   
+        }
     }
 }
