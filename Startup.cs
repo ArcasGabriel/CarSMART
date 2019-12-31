@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using DotNetAngularApp.Core;
 using DotNetAngularApp.Persistence;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
@@ -23,6 +24,8 @@ namespace DotNetAngularApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<CarSMARTDBContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:Default"]));
             services.AddControllersWithViews();

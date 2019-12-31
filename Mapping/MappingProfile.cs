@@ -1,6 +1,6 @@
 using System.Linq;
 using AutoMapper;
-using DotNetAngularApp.Models;
+using DotNetAngularApp.Core.Models;
 using DotNetAngularApp.Controllers.Resources;
 
 namespace DotNetAngularApp.Mapping
@@ -13,12 +13,17 @@ namespace DotNetAngularApp.Mapping
             CreateMap<Make, MakeResource>();
             CreateMap<Model, ModelResource>();
             CreateMap<Features, FeatureResource>();
-            CreateMap<Vehicle, VehicleResource>()
+            CreateMap<Vehicle, SaveVehicleResource>()
             .ForMember(vr => vr.Contact, opt=> opt.MapFrom(v => new Contact{ Name = v.ContactName, Email = v.ContactEmail, Phone = v.ContactPhone}))
             .ForMember(vr => vr.Features, opt=> opt.MapFrom(v => v.Features.Select(vr => vr.FeatureId)));
 
+            CreateMap<Vehicle, VehicleResource>()
+            .ForMember(vr => vr.Make, opt => opt.MapFrom(v => v.Model.Make))
+            .ForMember(vr => vr.Contact, opt=> opt.MapFrom(v => new Contact{ Name = v.ContactName, Email = v.ContactEmail, Phone = v.ContactPhone}))
+            .ForMember(vr => vr.Features, opt=> opt.MapFrom(v => v.Features.Select(vr => new FeatureResource { Id = vr.Feature.Id, Name = vr.Feature.Name})));
+
             // API Resources to Domain Models
-             CreateMap<VehicleResource, Vehicle>()
+             CreateMap<SaveVehicleResource, Vehicle>()
               .ForMember(v => v.Id, opt => opt.Ignore())
               .ForMember(v => v.ContactName, opt => opt.MapFrom(vr => vr.Contact.Name))
               .ForMember(v => v.ContactEmail, opt => opt.MapFrom(vr => vr.Contact.Email))

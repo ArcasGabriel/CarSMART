@@ -1,30 +1,26 @@
-using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
 using System;
-using DotNetAngularApp.Models;
+using System.Collections.Generic;
 
 namespace DotNetAngularApp.Controllers.Resources
 {
-
     public class VehicleResource
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        public int ModelId { get; set; }
+        public ModelResource Model { get; set; }
+        public MakeResource Make { get; set; }
         public bool IsRegistered { get; set; }
 
+        public Contact Contact { get; set; }
         public DateTime LastUpdate { get; set; }
 
-        public IList<int> Features { get; set; }
+        public IList<FeatureResource> Features { get; set; }
 
-        [Required]
-        public Contact Contact { get; set; }
+
 
         public VehicleResource()
-        { 
-            Features = new List<int>();
+        {
+          Features = new List<FeatureResource>();   
         }
-
     }
 }

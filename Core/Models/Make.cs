@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using System.Collections;
 using System.ComponentModel.DataAnnotations;
 
-namespace DotNetAngularApp.Models
+namespace DotNetAngularApp.Core.Models
 {
     public class Make
     {

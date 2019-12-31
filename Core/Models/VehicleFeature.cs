@@ -1,5 +1,4 @@
-using System.Collections.Generic;
-namespace DotNetAngularApp.Models
+namespace DotNetAngularApp.Core.Models
 {
     public class VehicleFeature
     {

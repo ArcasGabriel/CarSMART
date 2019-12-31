@@ -1,6 +1,5 @@
-using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-using DotNetAngularApp.Models;
+using DotNetAngularApp.Core.Models;
 
 namespace DotNetAngularApp.Persistence
 {

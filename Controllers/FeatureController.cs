@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using DotNetAngularApp.Models;
+using DotNetAngularApp.Core.Models;
 using DotNetAngularApp.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;

@@ -1,9 +1,4 @@
-
-    using System.Collections.Generic;
-    using System.Collections;
-    using System.ComponentModel.DataAnnotations;
-    using DotNetAngularApp.Models;
-
+using System.Collections.Generic;
 
 namespace DotNetAngularApp.Controllers.Resources
 {

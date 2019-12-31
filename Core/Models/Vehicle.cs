@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System;
-namespace DotNetAngularApp.Models
+namespace DotNetAngularApp.Core.Models
 {
     public class Vehicle
     {
