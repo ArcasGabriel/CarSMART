@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using DotNetAngularApp.Core;
 using DotNetAngularApp.Core.Models;
+using System.Collections.Generic;
 
 namespace DotNetAngularApp.Persistence
 {
@@ -36,5 +37,19 @@ namespace DotNetAngularApp.Persistence
         {
             context.Vehicles.Add(vehicle);
         }
+
+        public async Task<IList<Vehicle>> GetVehicles() 
+        {
+            return await context.Vehicles
+            .Include(v => v.Features)
+                .ThenInclude(vf => vf.Feature)
+            .Include(v => v.Model)
+                .ThenInclude(m => m.Make)
+                .ToListAsync();
+            
+        } 
+
+
+        
     }
 }

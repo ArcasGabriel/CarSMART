@@ -1,3 +1,5 @@
+import { ToastyService } from 'ng2-toasty';
+import { VechicleService } from './../services/vechicle.service';
 import { FeatureService } from './../services/feature.service';
 import { MakeService } from './../services/make.service';
 import { Component, OnInit } from '@angular/core';
@@ -20,7 +22,7 @@ export class VehicleFormComponent implements OnInit {
   
 
 
-  constructor(private makeService: MakeService, private featureService: FeatureService) { }
+  constructor(private makeService: MakeService, private featureService: FeatureService, private vehicleService: VechicleService, private toastyService: ToastyService) { }
 
   ngOnInit() {
     
@@ -46,6 +48,25 @@ export class VehicleFormComponent implements OnInit {
       var index = this.vehicle.features.indexOf(featureId);
       this.vehicle.features.splice(index, 1);
     }
+  }
+
+  submit() {
+
+    this.vehicleService.create(this.vehicle)
+    .subscribe(
+      x => console.log(x),
+      err => {
+        this.toastyService.error( {
+          title: 'Error',
+          msg: 'An unexpected error happend.',
+          theme: 'boostrap',
+          showClose: true,
+          timeout: 5000,
+        })
+      }
+      
+      )
+    
   }
 
 }

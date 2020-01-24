@@ -5,6 +5,7 @@ using DotNetAngularApp.Controllers.Resources;
 using DotNetAngularApp.Core.Models;
 using DotNetAngularApp.Core;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace DotNetAngularApp.Controllers
 {
@@ -24,6 +25,7 @@ namespace DotNetAngularApp.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateVehicle([FromBody] SaveVehicleResource vehicleResource)
         {
+            throw new Exception();
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
@@ -96,6 +98,23 @@ namespace DotNetAngularApp.Controllers
             return Ok(vehicleResource);
             
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetVehicles()
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest();
+
+                var vehicles = await repository.GetVehicles();
+
+                if (vehicles == null)
+                    return NotFound();
+
+                var vehicleResource = mapper.Map<IList<Vehicle>,IList<VehicleResource>>(vehicles);
+
+                return Ok(vehicleResource);
+            }
+        
         
     }
 }
