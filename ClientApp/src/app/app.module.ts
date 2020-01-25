@@ -1,7 +1,7 @@
 import { VechicleService } from './services/vechicle.service';
 import { FeatureService } from './services/feature.service';
 import { MakeService } from './services/make.service';
-import {ToastyModule, ToastyService} from 'ng2-toasty';
+// import {ToastyModule, ToastyService} from 'ng2-toasty';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -28,7 +28,7 @@ import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    ToastyModule.forRoot(),
+    // ToastyModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'vehicles/new', component: VehicleFormComponent},
@@ -36,7 +36,7 @@ import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [MakeService, FeatureService, VechicleService, ToastyService],
+  providers: [MakeService, FeatureService, VechicleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
